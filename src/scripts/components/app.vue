@@ -17,15 +17,20 @@ export default {
             tweets: []
         };
     },
-    async mounted() {
+    methods: {
+        async fetchTweets () {
         const url = "http://localhost:3000/tweets";
         try {
             const respons = await fetch(url);
-            const tweets = await respons.json();
-            this.tweets = tweets;
+            return await respons.json();
+
         } catch (err){
             console.log(err);
         }
+        }
+    },
+    async mounted() {
+        this.tweets = await this.fetchTweets();
         // const abortCtrl = new AbortController();
         // setTimeout(() => {
         //     abortCtrl.abort();

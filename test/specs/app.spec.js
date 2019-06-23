@@ -2,7 +2,9 @@
 import { assert } from 'chai';
 import { mount } from '@vue/test-utils';
 
+// @ts-ignore
 import App from '@/components/app';
+// @ts-ignore
 import TweetList from '@/components/tweet-list';
 suite('App', () => {
 	it('should plus 2 and 2', () => {
@@ -16,7 +18,12 @@ suite('App', () => {
 		assert.equal(input, output);
 	});
 	it('should render single TweetList item', () => {
-		const wrapper = mount(App);
+		const wrapper = mount(App, {
+			stubs: {
+				"b-card": true,
+				"b-card-text": true
+			}
+		});
 		assert.ok(wrapper.contains(TweetList));
 	});
 });

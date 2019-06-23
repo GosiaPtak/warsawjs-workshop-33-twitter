@@ -6,6 +6,7 @@
 
 <script>
 import TweetList from "@/components/tweet-list";
+import { setTimeout } from "timers";
 export default {
     name: "App",
     components: {
@@ -13,13 +14,26 @@ export default {
     },
     data() {
         return {
-            tweets: [
-                { id: "12978", body: "lorem10" },
-                { id: "987654", body: "lorem10lorem" },
-                { id: "108362", body: "lorem10loremloremlorem" },
-                { id: "1083652", body: "doloremloremdolorem" }
-            ]
+            tweets: []
         };
+    },
+    async mounted() {
+        const url = "http://localhost:3000/tweets";
+        try {
+            const respons = await fetch(url);
+            const tweets = await respons.json();
+            this.tweets = tweets;
+        } catch (err){
+            console.log(err);
+        }
+        // const abortCtrl = new AbortController();
+        // setTimeout(() => {
+        //     abortCtrl.abort();
+        // }, 15*1000);
+        // const url ="http://localhost:3000/tweets";
+        // const respons = await fetch (url, {signal: abortCtrl.signal});
+        // const tweets = await respons.json();
+        // this.tweets = tweets;
     }
 };
 </script>

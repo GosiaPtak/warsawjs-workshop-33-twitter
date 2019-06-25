@@ -6,7 +6,7 @@
             :img-src="tweet.author.avatar_url"
             img-alt="Card image"
             img-left
-            class="m-3 w-75"
+            class="m-3"
         >
             <b-card-text class="m-2">{{ tweet.body }}</b-card-text>
         </b-card>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import myDate from '@/helpers/my-date.js';
+import myDate from '@/helpers/my-date';
 
 export default {
     name: "Tweet",

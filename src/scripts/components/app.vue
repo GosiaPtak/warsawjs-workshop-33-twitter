@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <TweetList :tweets="tweets"></TweetList>
-    </div>
+    <b-container class="bv-example-row" fluid>
+        <TweetList
+            :tweets="tweets">
+        </TweetList>
+    </b-container>
 </template>
 
 <script>
@@ -42,6 +44,5 @@ export default {
     }
 };
 </script>
-
 <style>
 </style>

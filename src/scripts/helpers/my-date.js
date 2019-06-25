@@ -1,4 +1,4 @@
-export function myDate(value) {
+export default function myDate(value) {
     const d = new Date(value);
     if (isNaN(d)) {
         return null;

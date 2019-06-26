@@ -1,14 +1,13 @@
 <template>
     <b-container class="bv-example-row" fluid>
-        <TweetList
-            :tweets="tweets">
-        </TweetList>
+        <TweetList :tweets="tweets"></TweetList>
     </b-container>
 </template>
 
 <script>
 import TweetList from "@/components/tweet-list";
 import { setTimeout } from "timers";
+import { constants } from "crypto";
 export default {
     name: "App",
     components: {
@@ -20,16 +19,15 @@ export default {
         };
     },
     methods: {
-        async fetchTweets () {
-        const url = "http://localhost:3000/tweets";
-        try {
-            const respons = await fetch(url);
-            return await respons.json();
-
-        } catch (err){
-            console.log(err);
-        }
-        }
+        async fetchTweets() {
+            const url = "http://localhost:3000/tweets";
+            try {
+                const respons = await fetch(url);
+                return await respons.json();
+            } catch (err) {
+                console.log(err);
+            }
+        },
     },
     async mounted() {
         this.tweets = await this.fetchTweets();

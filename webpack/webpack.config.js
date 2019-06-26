@@ -4,6 +4,7 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 
 module.exports = {
+    // target: 'node',
     entry: [
         path.join(root, 'src', 'scripts', 'main.js'),
         path.join(root, 'src', 'index.html')
@@ -19,6 +20,12 @@ module.exports = {
             '@': path.join(root, 'src', 'scripts')
         }
     },
+    node: {
+        dns: 'mock',
+        fs: 'empty',
+        path: true,
+        url: true
+    },
     module: {
         rules: [
             {
@@ -28,9 +35,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: [
-                    'babel-loader'
-                ],
+                use: ['babel-loader'],
                 exclude: /node_modules/
             },
             {
@@ -53,14 +58,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader'
-                ]
+                use: ['vue-style-loader', 'css-loader']
             }
         ]
     },
-    plugins: [
-        new VueLoaderPlugin()
-    ]
+    plugins: [new VueLoaderPlugin()]
 };

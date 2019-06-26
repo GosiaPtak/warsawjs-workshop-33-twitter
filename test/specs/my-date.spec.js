@@ -1,10 +1,10 @@
 import { myDate } from '@/helpers/my-date'; //destructuring assigment
-import { AssertionError } from 'assert';
 import { assert } from 'chai';
 
 suite('myDate', () => {
     it('should return null when passed falsy value', () => {
-        const input = myDate("");
+        const input = myDate('');
+        console.log(input);
         const output = null;
         assert.equal(input, output);
     });

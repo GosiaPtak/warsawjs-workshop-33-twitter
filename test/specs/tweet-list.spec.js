@@ -19,10 +19,11 @@ suite('TweetList', () => {
 					]
 			},
 			stubs: {
+				Tweet: true,
 				'b-card': true,
 				'title': true,
-				//"b-card": <p>lorem impus</p>
-				'b-card-text': true
+				'b-card-text': true,
+				'b-row': true
 			}
 		});
 		assert.ok(wrapper.contains(Tweet));

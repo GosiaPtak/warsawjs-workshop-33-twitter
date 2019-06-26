@@ -24,7 +24,7 @@ export default {
     methods: {
         listenToTweetie() {
             EventBus.$on("onSubmit", newTweetie => {
-                console.log(newTweetie);
+                this.tweets.unshift(newTweetie);
             });
         }
     },

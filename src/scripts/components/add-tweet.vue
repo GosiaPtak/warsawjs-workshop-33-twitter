@@ -8,8 +8,8 @@
                 <b-card-body>
                     <b-card-text>
                         <b-form
-                            @submit.prevent="emitGlobalClickEvent"
-                            @reset="onReset"
+                            @submit.prevent="newTweet(form)"
+                            @reset.prevent="onReset(form)"
                             v-if="show"
                             class="alert alert-info shadow-sm pb-3 mb-3 rounded"
                         >
@@ -32,10 +32,10 @@
                                     placeholder="Enter max 160 characters"
                                     rows="4"
                                     :state="state"
-                                    :invalid-feedback="invalidFeedback"
                                 ></b-form-textarea>
                             </b-form-group>
-                            <b-button type="submit" variant="primary">Submit</b-button>
+                            <b-button type="reset" variant="danger">Reset</b-button>
+                            <b-button type="submit" variant="success">Submit</b-button>
                         </b-form>
                     </b-card-text>
                 </b-card-body>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import newTweet from "@/helpers/on-submit";
+import { newTweet, onReset } from "@/helpers/on-submit";
 import { EventBus } from "@/helpers/event-bus.js";
 export default {
     name: "AddTweet",
@@ -59,39 +59,18 @@ export default {
         };
     },
     methods: {
-        emitGlobalClickEvent() {
-            let newTweetie = {
-                id: Math.floor(Math.random() * 100),
-                created_time: new Date(),
-                author: {
-                    id: Math.floor(Math.random() * 100),
-                    name: this.form.name,
-                    avatar_url: null
-                },
-                body: this.form.text
-            };
-            //return newTweetie;
-            EventBus.$emit("onSubmit", newTweetie);
-        },
-        onReset(evt) {
-            evt.preventDefault();
-            this.form.name = "";
-            this.form.text = "";
-            this.show = false;
-            this.$nextTick(() => {
-                this.show = true;
-            });
-        }
+        newTweet,
+        onReset
     },
     computed: {
         state() {
             return this.form.text.length < 160 ? true : false;
         },
-        invalidFeedback() {
-            return this.state === true
-                ? "Thank you"
-                : "Please enter less than 160 characters";
-        }
+    },
+    destroyed() {
+        console.log("everything is destroyed");
+        newTweet.destroyed;
+        onReset.destroyed;
     }
 };
 </script>

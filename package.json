@@ -5,9 +5,9 @@
     "description": "",
     "license": "MIT",
     "author": {
-        "name": "Piotr Kowalski",
-        "email": "piecioshka@gmail.com",
-        "url": "https://piecioshka.pl/"
+        "name": " ",
+        "email": " ",
+        "url": " "
     },
     "scripts": {
         "db": "json-server db/tweets.json",
@@ -61,7 +61,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/piecioshka/warsawjs-workshop-33-twitter.git"
+        "url": "git+https://github.com/GosiaPtak/warsawjs-workshop-33-twitter/"
     },
     "engines": {
         "node": ">=8"

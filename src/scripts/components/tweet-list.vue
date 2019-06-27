@@ -1,10 +1,10 @@
 <template>
     <b-row>
-        <b-col cols="8">
-            <Tweet v-for="tweet in tweets" :key="tweet.id" :tweet="tweet"></Tweet>
-        </b-col>
-        <b-col cols="4">
+        <b-col sm="4">
             <AddTweet></AddTweet>
+        </b-col>
+        <b-col sm="8">
+            <Tweet v-for="tweet in tweets" :key="tweet.id" :tweet="tweet"></Tweet>
         </b-col>
     </b-row>
 </template>
